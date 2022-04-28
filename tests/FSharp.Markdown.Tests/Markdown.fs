@@ -786,3 +786,10 @@ let ``Parse blockquote with three leading spaces`` () =
           ) ]
 
     (Markdown.Parse doc).Paragraphs |> shouldEqual expected
+
+[<Test>]
+let ``Indirect links have correct ranges`` () =
+    //         0123456789012345
+    let doc = " [indirectLink]" |> Markdown.Parse
+    let expected = []
+    doc.Paragraphs |> shouldEqual
